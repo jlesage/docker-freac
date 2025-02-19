@@ -1,0 +1,112 @@
+---
+
+#
+# Definitions for fre:ac docker container.
+#
+# This file is used as data source to generate README.md and unRAID template files
+# from Jinja2 templates.
+#
+
+app:
+  id: xx
+  name: freac
+  friendly_name: fre:ac
+  gui_type: x11
+  base_os: alpine
+  project:
+    description: |-
+      fre:ac is a free and open source audio converter. It supports audio CD ripping
+      and tag editing and converts between various audio file formats.
+    url: https://www.freac.org
+  unraid:
+    #support_url: https://forums.unraid.net/topic/XXXXXX-support-freac/
+    category: "MediaApp:Music MediaApp:Other"
+  documentation:
+    sections:
+      - title: Access to Optical Drive(s)
+        level: 2
+        content: |-
+          By default, a Docker container doesn't have access to host's devices. However,
+          access to one or more devices can be granted with the `--device DEV` parameter
+          of the `docker run` command.
+
+          In the Linux world, optical drives are represented by device files named
+          `/dev/srX`,  where `X` is a number. The first drive is `/dev/sr0`, the second
+          is `/dev/sr1` and so on. To allow fre:ac to access the first drive, the
+          following parameter is needed:
+          ```
+          --device /dev/sr0
+          ```
+
+          The easiest way to determine the correct Linux devices to expose is to run the
+          container and look at its log. During the startup, messages similar to these
+          ones are outputed:
+          ```
+          [cont-init   ] 54-check-optical-drive.sh: looking for usable optical drives...
+          [cont-init   ] 54-check-optical-drive.sh: found optical drive 'hp HLDS DVDRW GUD1N LD02' [/dev/sr0]
+          [cont-init   ] 54-check-optical-drive.sh:   [ OK ]   associated SCSI CD-ROM (sr) device detected: /dev/sr0.
+          [cont-init   ] 54-check-optical-drive.sh:   [ ERR ]  the host device /dev/sr0 is not exposed to the container.
+          [cont-init   ] 54-check-optical-drive.sh: no usable optical drives found.
+          ```
+
+          In this case, it's clearly indicated that `/dev/sr0` needs to be exposed to the
+          container.
+
+          > [!NOTE]
+          > The container's log can be viewed by running the command
+          > `docker logs <container name>`.
+
+          Alternatively, Linux devices can be found by executing the following command on
+          the **host**:
+
+          ```
+          lsscsi -k
+          ```
+
+          From the command's output, the last column associated to an optical drive
+          indicates the Linux device that should be exposed to the container. In the
+          following output example, `/dev/sr0` would be exposed:
+
+          ```
+          [0:0:0:0]    disk    ATA      SanDisk SSD PLUS 9100  /dev/sda
+          [1:0:0:0]    disk    ATA      SanDisk SSD PLUS 9100  /dev/sdb
+          [2:0:0:0]    disk    ATA      ST3500418AS      HP34  /dev/sdc
+          [4:0:0:0]    cd/dvd  hp HLDS  DVDRW  GUD1N     LD02  /dev/sr0
+          ```
+  changelog:
+    - version: 25.02.1
+      date: 2024-02-18
+      changes:
+        - 'Initial release.'
+
+container:
+  storage_permissions: ro
+
+  # Environment variables.
+  environment_variables: []
+
+  # Volumes
+  volumes:
+    - container_path: /output
+      host_path_example: /home/user/freeac/output
+      description: >-
+        This is where encoded audio files are stored.
+      permissions: rw
+      include_in_quick_start: true
+      unraid_template:
+        title: Output Directory
+        description: >-
+          This is the default output folder for encoded audio files.
+        display: advanced-hide
+        required: true
+        mask: false
+
+  # Network ports
+  ports: []
+
+  # Devices
+  devices:
+    - path: /dev/sr0
+      description: >-
+        This is the Linux device file representing the optical drive.
+      include_in_quick_start: true

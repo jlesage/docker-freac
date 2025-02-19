@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConfigFile>
+ <configuration name="default">
+  <section name="Settings">
+   <value name="EncoderOutDir">/output/</value>
+  </section>
+ </configuration>
+</ConfigFile>
