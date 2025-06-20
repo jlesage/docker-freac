@@ -11,7 +11,7 @@ ARG DOCKER_IMAGE_VERSION=
 ARG FREAC_VERSION=1.1.7-r0
 
 # Pull base image.
-FROM jlesage/baseimage-gui:alpine-3.21-v4.7.1
+FROM jlesage/baseimage-gui:alpine-3.21-v4.8.0
 
 ARG FREAC_VERSION
 ARG DOCKER_IMAGE_VERSION
