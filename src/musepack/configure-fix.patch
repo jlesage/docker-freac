@@ -1,0 +1,12 @@
+--- a/configure.in	2025-06-23 10:40:47.267933986 -0400
++++ b/configure.in	2025-06-23 10:41:34.440354558 -0400
+@@ -32,6 +32,9 @@
+ 
+ CHECK_VISIBILITY
+ 
++AM_CONDITIONAL([HAVE_VISIBILITY], [false])
++AC_CHECK_LIB([m],[cos])
++
+ AC_CONFIG_FILES([
+ Makefile
+ include/Makefile

@@ -1,0 +1,22 @@
+--- a/mpcenc/keyboard.c	2025-06-23 10:54:24.680599992 -0400
++++ b/mpcenc/keyboard.c	2025-06-23 10:55:17.883612369 -0400
+@@ -52,6 +52,8 @@
+ 
+ #else
+ 
++#include <sys/select.h>
++
+ # ifdef USE_TERMIOS
+ #  include <termios.h>
+ 
+--- a/mpcenc/mpcenc.h	2025-06-23 10:50:13.833114445 -0400
++++ b/mpcenc/mpcenc.h	2025-06-23 10:50:22.875873118 -0400
+@@ -51,7 +51,7 @@
+ #endif
+ 
+ #if   defined __linux__
+-#  include <fpu_control.h>
++#  include <fenv.h>
+ #elif defined __FreeBSD__
+ # include <machine/floatingpoint.h>
+ #elif defined _MSC_VER
