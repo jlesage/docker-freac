@@ -27,6 +27,8 @@ RUN \
 RUN \
     add-pkg \
         adwaita-icon-theme \
+        # lsb_release called by fre:ac.
+        lsb-release-minimal \
         # For optical drive detection.
         lsscsi \
         # Need a font.
