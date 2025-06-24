@@ -74,6 +74,10 @@ app:
           [4:0:0:0]    cd/dvd  hp HLDS  DVDRW  GUD1N     LD02  /dev/sr0
           ```
   changelog:
+    - version: 25.06.2
+      date: 2025-06-23
+      changes:
+        - 'Added some missing audio decoders and encoders.'
     - version: 25.06.1
       date: 2025-06-20
       changes:
