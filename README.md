@@ -49,7 +49,7 @@ and tag editing and converts between various audio file formats.
       * [Web Audio](#web-audio)
       * [Web File Manager](#web-file-manager)
    * [Shell Access](#shell-access)
-   * [Access to Optical Drive(s)](#access-to-optical-drives)
+   * [Access to Optical Drives](#access-to-optical-drives)
    * [Support or Contact](#support-or-contact)
 
 ## Quick Start
@@ -76,7 +76,7 @@ Where:
   - `/docker/appdata/freac`: Stores the application's configuration, state, logs, and any files requiring persistency.
   - `/home/user`: Contains files from the host that need to be accessible to the application.
   - `/home/user/freeac/output`: This is where encoded audio files are stored.
-  - `/dev/sr0`: This is the Linux device file representing the optical drive.
+  - `/dev/sr0`: This is the Linux device file representing the optical drive. Linux device file corresponding to the optical drive.
 
 Access the fre:ac GUI by browsing to `http://your-host-ip:5800`.
 Files from the host appear under the `/storage` folder in the container.
@@ -656,23 +656,23 @@ docker exec -ti CONTAINER sh
 Where `CONTAINER` is the ID or the name of the container used during its
 creation.
 
-## Access to Optical Drive(s)
+## Access to Optical Drives
 
-By default, a Docker container doesn't have access to host's devices. However,
+By default, a Docker container does not have access to host's devices. However,
 access to one or more devices can be granted with the `--device DEV` parameter
 of the `docker run` command.
 
-In the Linux world, optical drives are represented by device files named
-`/dev/srX`,  where `X` is a number. The first drive is `/dev/sr0`, the second
-is `/dev/sr1` and so on. To allow fre:ac to access the first drive,
-the following parameter is needed:
+In Linux, optical drives are represented by device files named `/dev/srX`, where
+`X` is a number (e.g., `/dev/sr0` for the first drive, `/dev/sr1` for the
+second, etc). To allow fre:ac to access the first drive, use
+this parameter:
+
 ```
 --device /dev/sr0
 ```
 
-The easiest way to determine the correct Linux devices to expose is to run the
-container and look at its log. During the startup, messages similar to these
-ones are outputed:
+To identify the correct Linux devices to expose, check the container's log
+during startup. Look for messages like:
 ```
 [cont-init   ] 54-check-optical-drive.sh: looking for usable optical drives...
 [cont-init   ] 54-check-optical-drive.sh: found optical drive 'hp HLDS DVDRW GUD1N LD02' [/dev/sr0]
@@ -681,23 +681,19 @@ ones are outputed:
 [cont-init   ] 54-check-optical-drive.sh: no usable optical drives found.
 ```
 
-In this case, it's clearly indicated that `/dev/sr0` needs to be exposed to the
-container.
+This indicates that `/dev/sr0` needs to be exposed to the container.
 
-> [!NOTE]
-> The container's log can be viewed by running the command
-> `docker logs <container name>`.
+> [!TIP]
+> View the container’s log by running `docker logs <container_name>`.
 
-Alternatively, Linux devices can be found by executing the following command on
-the **host**:
+Alternatively, identify Linux devices from the host by running:
 
 ```
 lsscsi -k
 ```
 
-From the command's output, the last column associated to an optical drive
-indicates the Linux device that should be exposed to the container. In the
-following output example, `/dev/sr0` would be exposed:
+The output's last column for an optical drive indicates the device to expose.
+The following example shows that `/dev/sr0` should be exposed:
 
 ```
 [0:0:0:0]    disk    ATA      SanDisk SSD PLUS 9100  /dev/sda

@@ -44,7 +44,7 @@ Where:
   - `/docker/appdata/freac`: Stores the application's configuration, state, logs, and any files requiring persistency.
   - `/home/user`: Contains files from the host that need to be accessible to the application.
   - `/home/user/freeac/output`: This is where encoded audio files are stored.
-  - `/dev/sr0`: This is the Linux device file representing the optical drive.
+  - `/dev/sr0`: This is the Linux device file representing the optical drive. Linux device file corresponding to the optical drive.
 
 Access the fre:ac GUI by browsing to `http://your-host-ip:5800`.
 Files from the host appear under the `/storage` folder in the container.
