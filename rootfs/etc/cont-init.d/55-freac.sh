@@ -12,6 +12,6 @@ mkdir -p "$XDG_CONFIG_HOME"/gtk-3.0
 [ -f "$XDG_CONFIG_HOME"/gtk-3.0/bookmarks ] || cp -v /defaults/bookmarks "$XDG_CONFIG_HOME"/gtk-3.0/bookmarks
 
 # Take ownership of the output directory.
-take-ownership --not-recursive /output
+take-ownership --not-recursive --skip-if-writable /output
 
 # vim:ft=sh:ts=4:sw=4:et:sts=4
