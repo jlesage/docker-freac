@@ -8,7 +8,7 @@
 #
 
 app:
-  id: xx
+  id: 33
   name: freac
   friendly_name: fre:ac
   gui_type: x11
