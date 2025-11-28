@@ -12,6 +12,8 @@ This is a Docker container for [fre:ac](https://www.freac.org).
 The graphical user interface (GUI) of the application can be accessed through a
 modern web browser, requiring no installation or configuration on the client
 
+> This Docker container is entirely unofficial and not made by the creators of fre:ac.
+
 ---
 
 [![fre:ac logo](https://images.weserv.nl/?url=raw.githubusercontent.com/jlesage/docker-templates/master/jlesage/images/freac-icon.png&w=110)](https://www.freac.org)[![fre:ac](https://images.placeholders.dev/?width=192&height=110&fontFamily=monospace&fontWeight=400&fontSize=52&text=fre:ac&bgColor=rgba(0,0,0,0.0)&textColor=rgba(121,121,121,1))](https://www.freac.org)
