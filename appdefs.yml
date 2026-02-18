@@ -159,5 +159,4 @@ container:
     - path: /dev/sr0
       description: >-
         This is the Linux device file representing the optical drive.
-        Linux device file corresponding to the optical drive.
       include_in_quick_start: true
