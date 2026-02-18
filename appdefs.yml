@@ -127,7 +127,7 @@ app:
         - '2:Updated web UI components (Bootstrap).'
         - '2:Do not ask VNC password when accessing the web interface and web authentication is enabled.'
     - version: 25.02.1
-      date: 2024-02-18
+      date: 2025-02-18
       changes:
         - 'Initial release.'
 
