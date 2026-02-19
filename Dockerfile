@@ -66,7 +66,7 @@ RUN /build/build.sh "$RUBBERBAND_URL"
 RUN xx-verify /tmp/rubberband-install/usr/lib/librubberband.so
 
 # Pull base image.
-FROM jlesage/baseimage-gui:alpine-3.21-v4.11.0
+FROM jlesage/baseimage-gui:alpine-3.21-v4.11.1
 
 ARG FREAC_VERSION
 ARG DOCKER_IMAGE_VERSION
