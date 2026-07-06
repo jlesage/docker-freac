@@ -16,13 +16,13 @@ ARG FREAC_VERSION=1.1.7-r0
 ARG MP4V2_VERSION=2.1.3
 ARG MUSEPACK_VERSION=475
 ARG MAC_VERSION=920
-ARG RUNNERBAND_VERSION=1.8.2
+ARG RUBBERBAND_VERSION=1.8.2
 
 # Define software download URLs.
 ARG MP4V2_URL=https://github.com/enzo1982/mp4v2/releases/download/v${MP4V2_VERSION}/mp4v2-${MP4V2_VERSION}.tar.bz2
 ARG MUSEPACK_URL=https://files.musepack.net/source/musepack_src_r${MUSEPACK_VERSION}.tar.gz
 ARG MAC_URL=file:///build/MAC_${MAC_VERSION}_SDK.zip
-ARG RUBBERBAND_URL=https://breakfastquay.com/files/releases/rubberband-${RUNNERBAND_VERSION}.tar.bz2
+ARG RUBBERBAND_URL=https://breakfastquay.com/files/releases/rubberband-${RUBBERBAND_VERSION}.tar.bz2
 
 # Get Dockerfile cross-compilation helpers.
 FROM --platform=$BUILDPLATFORM tonistiigi/xx AS xx
