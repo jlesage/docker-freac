@@ -21,7 +21,7 @@ ARG RUNNERBAND_VERSION=1.8.2
 # Define software download URLs.
 ARG MP4V2_URL=https://github.com/enzo1982/mp4v2/releases/download/v${MP4V2_VERSION}/mp4v2-${MP4V2_VERSION}.tar.bz2
 ARG MUSEPACK_URL=https://files.musepack.net/source/musepack_src_r${MUSEPACK_VERSION}.tar.gz
-ARG MAC_URL=https://freac.org/patches/MAC_${MAC_VERSION}_SDK.zip
+ARG MAC_URL=file:///build/MAC_${MAC_VERSION}_SDK.zip
 ARG RUBBERBAND_URL=https://breakfastquay.com/files/releases/rubberband-${RUNNERBAND_VERSION}.tar.bz2
 
 # Get Dockerfile cross-compilation helpers.
